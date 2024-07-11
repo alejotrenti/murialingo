@@ -1,0 +1,1 @@
+ALTER TABLE "user_progress" RENAME COLUMN "user_name_src" TO "user_image_src";

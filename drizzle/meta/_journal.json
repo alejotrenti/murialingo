@@ -1,0 +1,41 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1720650402167,
+      "tag": "0000_legal_gravity",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1720653623732,
+      "tag": "0001_little_captain_marvel",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1720657194302,
+      "tag": "0002_crazy_firedrake",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1720666694687,
+      "tag": "0003_regular_aqueduct",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1720666883907,
+      "tag": "0004_classy_stick",
+      "breakpoints": true
+    }
+  ]
+}
