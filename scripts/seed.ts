@@ -99,28 +99,103 @@ const main = async() =>{
                 order:1,
                 question:"What does HTML stand for?"
             },
+            {
+                id:2,
+                lessonId:1, // INTRODUCTION
+                type:"ASSIST",
+                order:2,
+                question:"HTML"
+            },
+            {
+                id:3,
+                lessonId:1, // INTRODUCTION
+                type:"SELECT",
+                order:3,
+                question:"What is the tag for headings?"
+            },
         ]);
 
         await db.insert(schema.challengeOptions).values([
             {
-                id:1,
                 challengeId:1,
                 correct:true,
                 text:"HyperText Markup Language.",
-                //imageSrc: "html.svg",
+                imageSrc: "code.svg",
                 //audioSrc:"/html.mp3"
             },
             {
-                id:2,
                 challengeId:1,
+                correct:false,
+                imageSrc: "code.svg",
+                text:"Hyperlinks and Text Marking Language.",
+            },
+            {
+                imageSrc: "code.svg",
+                challengeId:1,
+                correct:false,
+                text:"Home Tool Markup Language.",
+            },
+        ]);
+
+        await db.insert(schema.challengeOptions).values([
+            {
+                challengeId:2,
+                correct:true,
+                text:"HyperText Markup Language.",
+                //audioSrc:"/html.mp3"
+            },
+            {
+                challengeId:2,
                 correct:false,
                 text:"Hyperlinks and Text Marking Language.",
             },
             {
-                id:3,
-                challengeId:1,
+                challengeId:2,
                 correct:false,
                 text:"Home Tool Markup Language.",
+            },
+        ]);
+
+        await db.insert(schema.challengeOptions).values([
+            {
+                challengeId:3,
+                correct:true,
+                text:"<h1> to <h6>",
+                //audioSrc:"/html.mp3"
+            },
+            {
+                challengeId:3,
+                correct:false,
+                text:"<head>",
+            },
+            {
+                challengeId:3,
+                correct:false,
+                text:"<h> to <H>",
+            },
+        ]);
+
+        await db.insert(schema.challenges).values([
+            {
+                id:4,
+                lessonId:2, // TEXT FORMATTING AND LINKS
+                type:"SELECT",
+                order:1,
+                question:"What does HTML stand for?"
+            },
+            {
+                id:5,
+                lessonId:2, // TEXT FORMATTING AND LINKS
+                type:"ASSIST",
+                order:2,
+                question:"HTML"
+            },
+            {
+                id:6,
+                lessonId:2, // TEXT FORMATTING AND LINKS
+                type:"SELECT",
+                order:3,
+                question:"What is the tag for headings?"
             },
         ]);
 

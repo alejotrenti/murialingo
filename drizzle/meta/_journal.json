@@ -36,6 +36,13 @@
       "when": 1720666883907,
       "tag": "0004_classy_stick",
       "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1721069224237,
+      "tag": "0005_little_blue_blade",
+      "breakpoints": true
     }
   ]
 }
