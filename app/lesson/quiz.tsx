@@ -182,7 +182,7 @@ export const Quiz=({
                     />
 
                     <h1 className="text-xl lg:text-3xl font-bold text-neutral-700">
-                        Great job! <br /> You&apos;ve completed the lesson.
+                        Buen trabajo! <br /> Completaste la clase.
                     </h1>
                     <div className="flex items-center gap-x-4 w-full">
                         <ResultCard 
@@ -205,7 +205,7 @@ export const Quiz=({
     }
 
     const title = challenge.type === "ASSIST"
-    ? "Select the correct meaning"
+    ? "Elige la opción correcta"
     : challenge.question;
 
 

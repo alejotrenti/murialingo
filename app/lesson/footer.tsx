@@ -32,13 +32,13 @@ export const Footer = ({
                 {status === "correct" && (
                     <div className="text-green-500 font-bold text-base lg:text-2xl flex items-center">
                         <CheckCircle className="h-6 w-6 lg:h-10 lg:w-10 mr-4" />
-                        Nicely done!
+                        Bien hecho!
                     </div>
                 )}
                 {status === "wrong" && (
                     <div className="text-rose-500 font-bold text-base lg:text-2xl flex items-center">
                         <XCircle className="h-6 w-6 lg:h-10 lg:w-10 mr-4" />
-                        Try again.
+                        Intenta de nuevo.
                     </div>
                 )}
                 {status === "completed" && (
@@ -47,7 +47,7 @@ export const Footer = ({
                         size={isMobile ? "sm" : "lg"}
                         onClick={() => window.location.href=`/lesson/${lessonId}`}
                     >
-                        Practice again
+                        Practica de nuevo
                     </Button>
                 )}
                 <Button
@@ -57,10 +57,10 @@ export const Footer = ({
                     size={isMobile ? "sm" : "lg"}
                     variant={status === "wrong" ? "danger" : "secundary"}
                 >
-                    {status === "none" && "Check"}
-                    {status === "correct" && "Next"}
-                    {status === "wrong" && "Retry"}
-                    {status === "completed" && "Continue"}
+                    {status === "none" && "Verificar"}
+                    {status === "correct" && "Siguiente"}
+                    {status === "wrong" && "Probar otra vez"}
+                    {status === "completed" && "Continuar"}
                 </Button>
             </div>
         </footer>

@@ -9,12 +9,12 @@ export const Promo = () => {
       <div className='space-y-2'>
         <div className='flex items-center gap-x-2'>
           <Image src='/unlimited.png' alt='Pro' height={26} width={26} />
-          <h3 className='text-lg font-bold'>Upgrade to Pro</h3>
+          <h3 className='text-lg font-bold'>Actualízate a Pro</h3>
         </div>
-        <p className='text-muted-foreground'>Get unlimited hearts and more!</p>
+        <p className='text-muted-foreground'>Obtén corazones ilimitados y más!</p>
       </div>
       <Button asChild variant='super' className='w-full' size='lg'>
-        <Link href='/shop'>Upgrade today</Link>
+        <Link href='/shop'>Actualízate ya!</Link>
       </Button>
     </div>
   )

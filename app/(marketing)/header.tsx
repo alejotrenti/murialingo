@@ -34,7 +34,7 @@ export const Header = () => {
                             mode="modal"
                         >
                             <Button size="lg" variant="ghost">
-                                Login
+                                Iniciar sesión
                             </Button>
                         </SignInButton>
                     </SignedOut>

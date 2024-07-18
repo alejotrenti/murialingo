@@ -29,6 +29,9 @@ const main = async () => {
       .values([
         { title: "HTML", imageSrc: "/html.svg" },
         { title: "CSS", imageSrc: "/css.svg" },
+        { title: "JavaScript", imageSrc: "/js.svg" },
+        { title: "Python", imageSrc: "/python.svg" },
+        { title: "SQL", imageSrc: "/sql.svg" },
       ])
       .returning();
 
@@ -39,14 +42,38 @@ const main = async () => {
         .values([
           {
             courseId: course.id,
-            title: "Unit 1",
-            description: `Learn the basics of ${course.title}`,
+            title: "Unidad 1",
+            description: `Introducción y fundamentos de ${course.title}`,
             order: 1,
           },
           {
             courseId: course.id,
-            title: "Unit 2",
-            description: `Learn intermediate ${course.title}`,
+            title: "Unidad 2",
+            description: `Conceptos intermedios de ${course.title}`,
+            order: 2,
+          },
+          {
+            courseId: course.id,
+            title: "Unidad 3",
+            description: `Funcionalidades avanzadas de ${course.title}`,
+            order: 3,
+          },
+          {
+            courseId: course.id,
+            title: "Unidad 4",
+            description: `Aplicaciones prácticas de ${course.title}`,
+            order: 4,
+          },
+          {
+            courseId: course.id,
+            title: "Unidad 5",
+            description: `Mejores prácticas y optimización de ${course.title}`,
+            order: 5,
+          },
+          {
+            courseId: course.id,
+            title: "Unidad 2",
+            description: `Conceptos intermedios de ${course.title}`,
             order: 2,
           },
         ])
@@ -57,11 +84,11 @@ const main = async () => {
         const lessons = await db
           .insert(schema.lessons)
           .values([
-            { unitId: unit.id, title: "Introduction", order: 1 },
-            { unitId: unit.id, title: "Text Formatting and Links", order: 2 },
-            { unitId: unit.id, title: "Adjectives", order: 3 },
-            { unitId: unit.id, title: "Phrases", order: 4 },
-            { unitId: unit.id, title: "Sentences", order: 5 },
+            { unitId: unit.id, title: "Introducción y fundamentos", order: 1 },
+            { unitId: unit.id, title: "Conceptos intermedios", order: 2 },
+            { unitId: unit.id, title: "Funcionalidades avanzadas", order: 3 },
+            { unitId: unit.id, title: "Aplicaciones prácticas", order: 4 },
+            { unitId: unit.id, title: "Conceptos intermedios", order: 5 },
           ])
           .returning();
 
@@ -73,50 +100,32 @@ const main = async () => {
               {
                 lessonId: lesson.id,
                 type: "SELECT",
-                question: 'What does HTML stand for?',
+                question: 'Que significa HTML?',
                 order: 1,
               },
               {
                 lessonId: lesson.id,
                 type: "SELECT",
-                question: 'Which one of these is "the woman"?',
+                question: '¿Cuál es la etiqueta correcta para crear un enlace en HTML?',
                 order: 2,
               },
               {
                 lessonId: lesson.id,
                 type: "SELECT",
-                question: 'Which one of these is "the boy"?',
+                question: '¿Qué etiqueta se usa para insertar una imagen en una página web?',
                 order: 3,
               },
               {
                 lessonId: lesson.id,
                 type: "ASSIST",
-                question: '"the man"',
+                question: '¿Cuál es la función de la etiqueta <h1>?',
                 order: 4,
               },
               {
                 lessonId: lesson.id,
-                type: "SELECT",
-                question: 'Which one of these is "the zombie"?',
-                order: 5,
-              },
-              {
-                lessonId: lesson.id,
-                type: "SELECT",
-                question: 'Which one of these is "the robot"?',
-                order: 6,
-              },
-              {
-                lessonId: lesson.id,
-                type: "SELECT",
-                question: 'Which one of these is "the girl"?',
-                order: 7,
-              },
-              {
-                lessonId: lesson.id,
                 type: "ASSIST",
-                question: '"the zombie"',
-                order: 8,
+                question: '¿Cuál es la función de la etiqueta <ul>?',
+                order: 5,
               },
             ])
             .returning();
@@ -129,19 +138,16 @@ const main = async () => {
                   challengeId: challenge.id,
                   correct: true,
                   text: "HyperText Markup Language",
-                  imageSrc: "/code.svg",
                 },
                 {
                   challengeId: challenge.id,
                   correct: false,
                   text: "Hyperlinks and Text Marking Language.",
-                  imageSrc: "/code.svg",
                 },
                 {
                   challengeId: challenge.id,
                   correct: false,
                   text: "Home Tool Markup Language.",
-                  imageSrc: "/code.svg",
                 },
               ]);
             }
@@ -150,24 +156,18 @@ const main = async () => {
               await db.insert(schema.challengeOptions).values([
                 {
                   challengeId: challenge.id,
+                  correct: false,
+                  text: "<link>",
+                },
+                {
+                  challengeId: challenge.id,
                   correct: true,
-                  text: "la mujer",
-                  imageSrc: "/woman.svg",
-                  audioSrc: "/es_woman.mp3",
+                  text: "<a>",
                 },
                 {
                   challengeId: challenge.id,
                   correct: false,
-                  text: "el chico",
-                  imageSrc: "/boy.svg",
-                  audioSrc: "/es_boy.mp3",
-                },
-                {
-                  challengeId: challenge.id,
-                  correct: false,
-                  text: "el hombre",
-                  imageSrc: "/man.svg",
-                  audioSrc: "/es_man.mp3",
+                  text: "<href>",
                 },
               ]);
             }
@@ -177,23 +177,17 @@ const main = async () => {
                 {
                   challengeId: challenge.id,
                   correct: false,
-                  text: "la mujer",
-                  imageSrc: "/woman.svg",
-                  audioSrc: "/es_woman.mp3",
+                  text: "<image>",
                 },
                 {
                   challengeId: challenge.id,
                   correct: false,
-                  text: "el hombre",
-                  imageSrc: "/man.svg",
-                  audioSrc: "/es_man.mp3",
+                  text: "<pic>",
                 },
                 {
                   challengeId: challenge.id,
                   correct: true,
-                  text: "el chico",
-                  imageSrc: "/boy.svg",
-                  audioSrc: "/es_boy.mp3",
+                  text: "<img>",
                 },
               ]);
             }
@@ -202,21 +196,18 @@ const main = async () => {
               await db.insert(schema.challengeOptions).values([
                 {
                   challengeId: challenge.id,
-                  correct: false,
-                  text: "la mujer",
-                  audioSrc: "/es_woman.mp3",
-                },
-                {
-                  challengeId: challenge.id,
                   correct: true,
-                  text: "el hombre",
-                  audioSrc: "/es_man.mp3",
+                  text: "Establece un encabezado de nivel 1 en la página.",
                 },
                 {
                   challengeId: challenge.id,
                   correct: false,
-                  text: "el chico",
-                  audioSrc: "/es_boy.mp3",
+                  text: "Representa la primera sección de un documento HTML.",
+                },
+                {
+                  challengeId: challenge.id,
+                  correct: false,
+                  text: "Define un estilo de texto grande y destacado.",
                 },
               ]);
             }
@@ -226,98 +217,17 @@ const main = async () => {
                 {
                   challengeId: challenge.id,
                   correct: false,
-                  text: "el hombre",
-                  imageSrc: "/man.svg",
-                  audioSrc: "/es_man.mp3",
-                },
-                {
-                  challengeId: challenge.id,
-                  correct: false,
-                  text: "la mujer",
-                  imageSrc: "/woman.svg",
-                  audioSrc: "/es_woman.mp3",
+                  text: "Subrayado",
                 },
                 {
                   challengeId: challenge.id,
                   correct: true,
-                  text: "el zombie",
-                  imageSrc: "/zombie.svg",
-                  audioSrc: "/es_zombie.mp3",
-                },
-              ]);
-            }
-
-            if (challenge.order === 6) {
-              await db.insert(schema.challengeOptions).values([
-                {
-                  challengeId: challenge.id,
-                  correct: true,
-                  text: "el robot",
-                  imageSrc: "/robot.svg",
-                  audioSrc: "/es_robot.mp3",
+                  text: "Lista no ordenada",
                 },
                 {
                   challengeId: challenge.id,
                   correct: false,
-                  text: "el zombie",
-                  imageSrc: "/zombie.svg",
-                  audioSrc: "/es_zombie.mp3",
-                },
-                {
-                  challengeId: challenge.id,
-                  correct: false,
-                  text: "el chico",
-                  imageSrc: "/boy.svg",
-                  audioSrc: "/es_boy.mp3",
-                },
-              ]);
-            }
-
-            if (challenge.order === 7) {
-              await db.insert(schema.challengeOptions).values([
-                {
-                  challengeId: challenge.id,
-                  correct: true,
-                  text: "la nina",
-                  imageSrc: "/girl.svg",
-                  audioSrc: "/es_girl.mp3",
-                },
-                {
-                  challengeId: challenge.id,
-                  correct: false,
-                  text: "el zombie",
-                  imageSrc: "/zombie.svg",
-                  audioSrc: "/es_zombie.mp3",
-                },
-                {
-                  challengeId: challenge.id,
-                  correct: false,
-                  text: "el hombre",
-                  imageSrc: "/man.svg",
-                  audioSrc: "/es_man.mp3",
-                },
-              ]);
-            }
-
-            if (challenge.order === 8) {
-              await db.insert(schema.challengeOptions).values([
-                {
-                  challengeId: challenge.id,
-                  correct: false,
-                  text: "la mujer",
-                  audioSrc: "/es_woman.mp3",
-                },
-                {
-                  challengeId: challenge.id,
-                  correct: true,
-                  text: "el zombie",
-                  audioSrc: "/es_zombie.mp3",
-                },
-                {
-                  challengeId: challenge.id,
-                  correct: false,
-                  text: "el chico",
-                  audioSrc: "/es_boy.mp3",
+                  text: "Enlace",
                 },
               ]);
             }
