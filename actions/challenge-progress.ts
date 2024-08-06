@@ -1,88 +1,94 @@
-"use server";
+'use server'
 
-import db from "@/db/drizzle";
-import { getUserProgress } from "@/db/queries";
-import { auth } from "@clerk/nextjs/server";
-import { and, eq } from "drizzle-orm";
-import { 
-    challengeProgress,
-    challenges,
-    userProgress
-} from "@/db/schema";
-import { revalidatePath } from "next/cache";
+import { auth } from '@clerk/nextjs/server'
+import { and, eq } from 'drizzle-orm'
+import { revalidatePath } from 'next/cache'
 
-export const upsertChallengeProgress=async(challengeId:number)=>{
-    const{userId}=await auth();
+import db from '@/db/drizzle'
+import { getUserProgress, getUserSubscription } from '@/db/queries'
+import { challengeProgress, challenges, userProgress } from '@/db/schema'
 
-    if (!userId){
-        throw new Error("Unauthorized");
-    }
+export const upsertChallengeProgress = async (challengeId: number) => {
+  const { userId } = await auth()
 
-    const currentUserProgress = await getUserProgress();
+  if (!userId) {
+    throw new Error('Unauthorized')
+  }
 
-    if(!currentUserProgress){
-        throw new Error("User progress not found");
-    }
+  const currentUserProgress = await getUserProgress()
+  const userSubscription = await getUserSubscription()
 
-    const challenge = await db.query.challenges.findFirst({
-        where: eq(challenges.id, challengeId)
-    });
+  if (!currentUserProgress) {
+    throw new Error('User progress not found')
+  }
 
-    if(!challenge){
-        throw new Error("Challenge not found");        
-    }
+  const challenge = await db.query.challenges.findFirst({
+    where: eq(challenges.id, challengeId)
+  })
 
-    const lessonId=challenge.lessonId;
-    
-    const existingChallengeProgress = await db.query.challengeProgress.findFirst({
-        where: and(
-            eq(challengeProgress.userId, userId),
-            eq(challengeProgress.challengeId, challengeId),
-        ),
-    });
+  if (!challenge) {
+    throw new Error('Challenge not found')
+  }
 
-    const isPractice = !!existingChallengeProgress;
+  const lessonId = challenge.lessonId
 
-    if(currentUserProgress.hearts === 0 && !isPractice){
-        return{
-            error:"hearts"
-        };
-    }
+  const existingChallengeProgress = await db.query.challengeProgress.findFirst({
+    where: and(
+      eq(challengeProgress.userId, userId),
+      eq(challengeProgress.challengeId, challengeId)
+    )
+  })
 
-    if(isPractice){
-        await db.update(challengeProgress).set({
-            completed: true,
-        })
-        .where(
-            eq(challengeProgress.id, existingChallengeProgress.id)
-        );
+  const isPractice = !!existingChallengeProgress
 
-        await db.update(userProgress).set({
-            hearts: Math.min(currentUserProgress.hearts + 1, 5),
-            points: currentUserProgress.points + 10,
-        }).where(eq(userProgress.userId, userId));
+  if (
+    currentUserProgress.hearts === 0 &&
+    !isPractice &&
+    !userSubscription?.isActive
+  ) {
+    return { error: 'hearts' }
+  }
 
-        revalidatePath("/learn");
-        revalidatePath("/lesson");
-        revalidatePath("/quests");
-        revalidatePath("/leaderboard");
-        revalidatePath(`/lesson/${lessonId}`);
-        return;
-    }
+  if (isPractice) {
+    await db
+      .update(challengeProgress)
+      .set({
+        completed: true
+      })
+      .where(eq(challengeProgress.id, existingChallengeProgress.id))
 
-    await db.insert(challengeProgress).values({
-        challengeId,
-        userId,
-        completed: true,
-    });
+    await db
+      .update(userProgress)
+      .set({
+        hearts: Math.min(currentUserProgress.hearts + 1, 5),
+        points: currentUserProgress.points + 10
+      })
+      .where(eq(userProgress.userId, userId))
 
-    await db.update(userProgress).set({
-        points: currentUserProgress.points + 10,
-    }).where(eq(userProgress.userId, userId));
+    revalidatePath('/learn')
+    revalidatePath('/lesson')
+    revalidatePath('/quests')
+    revalidatePath('/leaderboard')
+    revalidatePath(`/lesson/${lessonId}`)
+    return
+  }
 
-    revalidatePath("/learn");
-    revalidatePath("/lesson");
-    revalidatePath("/quests");
-    revalidatePath("/leaderboard");
-    revalidatePath(`/lesson/${lessonId}`);
-};
+  await db.insert(challengeProgress).values({
+    challengeId,
+    userId,
+    completed: true
+  })
+
+  await db
+    .update(userProgress)
+    .set({
+      points: currentUserProgress.points + 10
+    })
+    .where(eq(userProgress.userId, userId))
+
+  revalidatePath('/learn')
+  revalidatePath('/lesson')
+  revalidatePath('/quests')
+  revalidatePath('/leaderboard')
+  revalidatePath(`/lesson/${lessonId}`)
+}

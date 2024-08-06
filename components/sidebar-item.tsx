@@ -10,12 +10,14 @@ type Props = {
     label: string;
     iconSrc: string;
     href: string;
+    className?: string;
 };
 
 export const SidebarItem = ({
     label,
     iconSrc,
     href,
+    className
 }: Props) => {
     const pathname = usePathname();
     const active = pathname === href;

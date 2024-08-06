@@ -1,21 +1,23 @@
 "use client";
 
-import { challengeOptions, challenges, lessons } from "@/db/schema";
-import { useState, useTransition } from "react";
-import { Header } from "./header";
-import { QuestionBubble } from "./question-bubble";
-import { Challenge } from "./challenge";
-import { Footer } from "./footer";
-import { upsertChallengeProgress } from "@/actions/challenge-progress";
-import { toast } from "sonner";
-import { reduceHearts } from "@/actions/user-progress";
-import { useAudio, useWindowSize, useMount } from "react-use";
-import Image from "next/image";
-import { ResultCard } from "./result-card";
-import { useRouter } from "next/navigation";
-import Confetti from "react-confetti";
-import { useHeartsModal } from "@/store/use-hearts-modal";
-import { usePracticeModal } from "@/store/use-practice-modal";
+import { useState, useTransition } from 'react'
+import { toast } from 'sonner'
+import { useRouter } from 'next/navigation'
+import Image from 'next/image'
+import { useAudio, useWindowSize, useMount } from 'react-use'
+import Confetti from 'react-confetti'
+
+import { challengeOptions, challenges, userSubscription } from '@/db/schema'
+import { upsertChallengeProgress } from '@/actions/challenge-progress'
+import { reduceHearts } from '@/actions/user-progress'
+import { useHeartsModal } from '@/store/use-hearts-modal'
+import { usePracticeModal } from '@/store/use-practice-modal'
+
+import { Header } from './header';
+import { ResultCard } from './result-card';
+import { Footer } from './footer';
+import { QuestionBubble } from './question-bubble';
+import { Challenge } from './challenge';
 
 type Props ={
     initialPercentage: number;

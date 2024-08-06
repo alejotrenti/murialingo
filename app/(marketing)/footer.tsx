@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 export const Footer = () => {
     return (
@@ -30,6 +31,17 @@ export const Footer = () => {
                         </svg>
                     </div>
                     JavaScript
+                </Button>
+                <Button size="lg" variant="ghost" className="w-full">
+                    <div className="mr-4 rounded-md" style={{ width: 40, height: 32 }}>
+                        <Image 
+                            src="/python.svg"
+                            alt="Python"
+                            width= {40} 
+                            height= {32}
+                        />
+                    </div>
+                    Python
                 </Button>
                 <Button size="lg" variant="ghost" className="w-full">
                     <div className="mr-4 rounded-md" style={{ width: 40, height: 32 }}>

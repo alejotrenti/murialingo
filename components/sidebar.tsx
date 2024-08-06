@@ -9,6 +9,9 @@ import {
 } from "@clerk/nextjs";
 
 import { Loader } from "lucide-react";
+import { Button } from "./ui/button";
+import { GoGear } from "react-icons/go";
+import { DropUp } from "./dropup";
 
 type Props = {
     className?: string;
@@ -50,13 +53,21 @@ export const Sidebar = ({ className }: Props) => {
                     iconSrc="/shop.png"
                 />
             </div>
-            <div className="p-4">
+            <SidebarItem 
+                    className=""
+                    label="Ayuda" 
+                    href="/doc"
+                    iconSrc="/doc.png"
+            />
+            <div className="p-4 inline-flex justify-between gap-y-6">
                 <ClerkLoading>
                     <Loader className="h-5 w-5 text-muted-foreground animate-spin" />
                 </ClerkLoading>
                 <ClerkLoaded>
                     <UserButton />
                 </ClerkLoaded>
+                
+                <DropUp />
             </div>
         </div>
     );

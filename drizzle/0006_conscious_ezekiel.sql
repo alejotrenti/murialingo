@@ -1,0 +1,1 @@
+ALTER TABLE "user_subscription" ALTER COLUMN "stripe_current_period_end" SET DATA TYPE timestamp;
