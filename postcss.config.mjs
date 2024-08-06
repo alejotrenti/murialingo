@@ -1,11 +1,12 @@
 /** @type {import('postcss-load-config').Config} */
 const config = {
-  plugins: {
-    darkMode: 'class',
-    tailwindcss: {
-      darkMode: 'class',
-    },
-  },
+// postcss.config.js
+module.exports = {
+  plugins: [
+    require('tailwindcss'),
+    require('autoprefixer'),
+  ],
 };
+
 
 export default config;
