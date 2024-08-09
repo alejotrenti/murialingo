@@ -30,7 +30,7 @@ export const Card = ({ title, id, imageSrc, onClick }: Props) => {
                 width={93.33}
                 className="rounded-lg drop-shadow-md object-cover"
             />
-            <p className="text-neutral-700 lg:text-2xl text-center font-semibold mt-5">
+            <p className="text-neutral-700 dark:text-[#94A3B8] lg:text-2xl text-center font-semibold mt-5">
                 {title}
             </p>
         </div>

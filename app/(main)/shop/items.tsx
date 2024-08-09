@@ -45,8 +45,8 @@ type Props = {
         <div className='flex w-full items-center gap-x-4 border-t-2 p-4'>
           <Image src='/heart.png' alt='Heart' height={60} width={60} />
           <div className='flex-1'>
-            <p className='text-base font-bold text-neutral-700 lg:text-xl'>
-              Rellenar corazones
+            <p className='text-base font-bold text-neutral-700 dark:text-white lg:text-xl'>
+              Comprar corazones
             </p>
           </div>
           <Button
@@ -66,7 +66,7 @@ type Props = {
         <div className='flex w-full items-center gap-x-4 border-t-2 p-4 pt-8'>
           <Image src='/unlimited.png' alt='Unlimited' height={60} width={60} />
           <div className='flex-1'>
-            <p className='text-base font-bold text-neutral-700 lg:text-xl'>
+            <p className='text-base font-bold text-neutral-700 dark:text-white lg:text-xl'>
               Corazones infinitos
             </p>
           </div>

@@ -13,11 +13,11 @@ import Link from "next/link"
 export default function Home() {
   return(
     <div className="max-w-[988px] mx-auto flex-1 w-full flex flex-col lg:flex-row items-center justify-center p-4 gap-2">
-      <div className="relative w-[240px] h-[240px] lg:w-[400px] lg:h-[400px] mb-8 lg:mb-0">
+      <div className="relative w-[240px] h-[240px] lg:w-[400px] lg:h-[400px] mb-8 lg:mb-0 fill-[#0F0F0F] dark:fill-[#ffffff]">
         <Image src="/code.svg" fill alt="hero" />
       </div>
       <div className="flex flex-col items-center gap-y-8">
-        <h1 className="text-xl lg:text-3xl font-bold text-neutral-600 max-w-[480px] text-center">
+        <h1 className="text-xl lg:text-3xl font-bold text-neutral-600 dark:text-slate-300 max-w-[480px] text-center">
           Aprende, practica y domina lenguajes de programación con Murialingo.
         </h1>
         <div className="flex flex-col items-center gap-y-3 max-w-[330px] w-full">

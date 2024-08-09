@@ -50,10 +50,10 @@ const LeaderboardPage = async () => {
             height={90}
             width={90}
           />
-          <h1 className='my-6 text-center text-2xl font-bold text-neutral-800'>
+          <h1 className='my-6 text-center text-2xl font-bold text-neutral-800 dark:text-white'>
             Marcador
           </h1>
-          <p className='mb-6 text-center text-lg text-muted-foreground'>
+          <p className='mb-6 text-center text-lg text-muted-foreground dark:text-white'>
             Vea su posición entre otros estudiantes de la comunidad.
           </p>
           <Separator className='mb-4 h-0.5 rounded-full' />
@@ -69,10 +69,10 @@ const LeaderboardPage = async () => {
                   src={userProgress.userImageSrc}
                 />
               </Avatar>
-              <p className='flex-1 font-bold text-neutral-800'>
+              <p className='flex-1 font-bold text-neutral-800 dark:text-white'>
                 {userProgress.userName}
               </p>
-              <p className='text-muted-foreground'>{userProgress.points} XP</p>
+              <p className='text-muted-foreground dark:text-white'>{userProgress.points} XP</p>
             </div>
           ))}
         </div>

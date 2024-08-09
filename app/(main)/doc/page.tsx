@@ -26,7 +26,7 @@ const Documentation = async () => {
                     No te preocupes, <span className="italic">{user?.firstName}</span>. Aquí llegamos nosotros a ayudarte!
                 </h2>
                 <div className="h-full max-w-[912px] px-3 mx-auto">
-                    <h1 className="text-2xl font-bold text-neutral-700 my-4 mt-2">
+                    <h1 className="text-2xl font-bold my-4 mt-2">
                         En que necesitas ayuda?
                     </h1>
                     <List 

@@ -31,7 +31,7 @@ export const Quests = ({ points }: Props) => {
             >
               <Image src='/points.png' alt='Points' width={40} height={40} />
               <div className='flex w-full flex-col gap-y-2'>
-                <p className='text-sm font-bold text-neutral-700'>
+                <p className='text-sm font-bold text-neutral-700 dark:text-white'>
                   {quest.title}
                 </p>
                 <Progress value={progress} className='h-2' />

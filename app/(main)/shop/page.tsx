@@ -43,7 +43,7 @@ const ShopPage = async () => {
                         height={90}
                         width={90}
                     />
-                    <h1 className="text-center font-bold text-neutral-800 text-2xl my-6">
+                    <h1 className="text-center font-bold text-neutral-800 dark:text-white text-2xl my-6">
                         Tienda
                     </h1>
                     <p className="text-muted-foreground text-center text-lg mb-6">
