@@ -23,9 +23,10 @@ export const List = ({ courses, activeCourseId}: Props) =>{
             return router.push("/learn");
         }
 
+
         startTransition(()=>{
             upsertUserProgress(id)
-            .catch(() => toast.error("Something went wrong"));
+            .catch(() => toast.error("Primero debes completar los demás lenguajes!"));
         });
     };
 

@@ -67,8 +67,8 @@ export const LessonButton = ({
       >
         {current ? (
           <div className='relative h-[102px] w-[102px]'>
-            <div className='absolute -top-6 left-2.5 z-10 animate-bounce rounded-xl border-2 dark:border-[#32435e] bg-white dark:bg-[#1e293b] px-3 py-2.5 font-bold uppercase tracking-wide text-green-500'>
-              Start
+            <div className='absolute -top-6 right-0.8 z-10 animate-bounce rounded-xl border-2 dark:border-[#32435e] bg-white dark:bg-[#1e293b] px-3 py-2.5 font-bold uppercase tracking-wide text-green-500'>
+              Empezar
               <div className='absolute -bottom-2 left-1/2 h-0 w-0 -translate-x-1/2 transform border-x-8 border-t-8 border-x-transparent' />
             </div>
             <CircularProgressbarWithChildren

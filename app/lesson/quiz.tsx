@@ -183,7 +183,7 @@ export const Quiz=({
                         width={50}
                     />
 
-                    <h1 className="text-xl lg:text-3xl font-bold text-neutral-700">
+                    <h1 className="text-xl lg:text-3xl font-bold text-neutral-700 dark:text-[#c7cfd9]">
                         Buen trabajo! <br /> Completaste la clase.
                     </h1>
                     <div className="flex items-center gap-x-4 w-full">
@@ -223,7 +223,7 @@ export const Quiz=({
             <div className="flex-1">
                 <div className="h-full flex items-center justify-center">
                     <div className="lg:min-h-[350px] lg:w-[600px] w-full px-6 lg:px-0 flex flex-col gap-y-12">
-                        <h1 className="text-lg lg:text-3xl text-center lg:text-start font-bold text-neutral-700">
+                        <h1 className="text-lg lg:text-3xl text-center lg:text-start font-bold text-neutral-700 dark:text-[#94A3B8]">
                             {title}
                         </h1>
                         <div>
