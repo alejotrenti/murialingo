@@ -33,29 +33,39 @@ export const upsertUserProgress = async (courseId: number) => {
 
   const existingUserProgress = await getUserProgress()
 
+  const userName = user.username || user.firstName || 'Usuario'
+  const userImageSrc = user.imageUrl || '/mascot.svg'
+
   if (existingUserProgress) {
-    await db.update(userProgress).set({
+    if (existingUserProgress.userName !== userName) {
+      await db.update(userProgress).set({
+        activeCourseId: courseId,
+        userName, // Actualizamos solo si ha cambiado
+        userImageSrc
+      })
+    } else {
+      await db.update(userProgress).set({
+        activeCourseId: courseId
+      })
+    }
+
+    revalidatePath('/courses')
+    revalidatePath('/learn')
+    redirect('/learn')
+  } else {
+    await db.insert(userProgress).values({
+      userId,
       activeCourseId: courseId,
-      userName: user.firstName || 'Usuario',
-      userImageSrc: user.imageUrl || '/mascot.svg'
+      userName,
+      userImageSrc
     })
 
     revalidatePath('/courses')
     revalidatePath('/learn')
     redirect('/learn')
   }
-
-  await db.insert(userProgress).values({
-    userId,
-    activeCourseId: courseId,
-    userName: user.firstName || 'Usuario',
-    userImageSrc: user.imageUrl || '/mascot.svg'
-  })
-
-  revalidatePath('/courses')
-  revalidatePath('/learn')
-  redirect('/learn')
 }
+
 
 export const reduceHearts = async (challengeId: number) => {
   const { userId } = await auth()

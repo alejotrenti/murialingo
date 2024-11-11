@@ -7,6 +7,8 @@ import { CourseList } from './course/CourseList'
 import { CourseEdit } from './course/CourseEdit'
 import { CourseCreate } from './course/CourseCreate'
 
+import { UserList } from './userProgress/UserList'
+
 import { UnitList } from './unit/UnitList'
 import { UnitCreate } from './unit/UnitCreate'
 import { UnitEdit } from './unit/UnitEdit'
@@ -21,12 +23,19 @@ import { ChallengeEdit } from './challenge/ChallengeEdit'
 import { ChallengeOptionList } from './challengeOption/ChallengeOptionList'
 import { ChallengeOptionCreate } from './challengeOption/ChallengeOptionCreate'
 import { ChallengeOptionEdit } from './challengeOption/ChallengeOptionEdit'
+import { UserEdit } from './userProgress/UserEdit'
 
 const dataProvider = simpleRestProvider('/api')
 
 const App = () => {
   return (
     <Admin dataProvider={dataProvider}>
+      <Resource
+        name='userProgress'
+        list={UserList}
+        edit={UserEdit}
+        recordRepresentation='title'
+      />
       <Resource
         name='courses'
         list={CourseList}
@@ -63,6 +72,7 @@ const App = () => {
         recordRepresentation='text'
         options={{ label: 'Challenge Options' }}
       />
+
     </Admin>
   )
 }

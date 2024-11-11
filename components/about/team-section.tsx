@@ -7,22 +7,22 @@ const teamMembers = [
   {
     name: 'Alejo',
     role: 'Estudiante 7to Informática B',
-    image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=400&fit=crop',
+    image: '/alejo.jpg',
   },
   {
     name: 'Nicolas',
     role: 'Estudiante 7to Informática B',
-    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop',
+    image: '/nico.jpg',
   },
   {
     name: 'Santiago',
     role: 'Estudiante 7to Informática B',
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop',
+    image: '/santi.jpg',
   },
   {
     name: 'Franco',
     role: 'Estudiante 7to Informática B',
-    image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop',
+    image: '/colo.jpg',
   }
 ];
 
